@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('discounts', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->bigInt('discountable_id');
+            $table->string('discountable_type');
         });
     }
 

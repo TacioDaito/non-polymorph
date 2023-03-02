@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('identity_documents', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('user_id',false,true);
+            $table->string('code')->unique();
             $table->timestamps();
         });
     }

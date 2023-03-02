@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+/*
+-------------------------------------
+| CRUD
+-----------------------------
+*/
+
+Route::get('users/create/{name}/{email}', CreateUserController::class);
+Route::get('users', ListAllUsersController::class);
+Route::get('users/update/{id}/{newName}/{newEmail}', UpdateUserController::class);
+Route::get('users/delete/{id}', DeleteUserController::class); 
+
+/*
+-------------------------------------
+| One-to-one
+-----------------------------
+*/
+
+Route::get('users/document',ListAllIdentityDocuments::class);
+Route::get('users/document/register/{id}/{code}',RegisterUserDocument::class);
+Route::get('users/document/update/{id}/{newCode}',UpdateIdentityDocument::class);
